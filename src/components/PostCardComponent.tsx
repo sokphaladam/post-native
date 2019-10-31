@@ -30,13 +30,12 @@ const styles = StyleSheet.create({
     width: 320,
     height: 400,
     backgroundColor: '#fff',
-    borderRadius: 7,
     margin: 10
   },
   image: {
     width: 320,
     height: 300,
-    borderRadius: 7
+  
   },
   profile: {
     width: 320,

@@ -1,39 +1,47 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { PostCardComponent } from './src/components/PostCardComponent';
+import { StyleSheet, Text, View } from 'react-native';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
+import {createAppContainer} from 'react-navigation';
+import HomeScreen from './screens/HomeScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import MenuScreen from './screens/MenuScreen';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function App() {
-  return (
-    <ScrollView>
-      <View style={styles.container}>
-        <PostCardComponent 
-          uriImage="https://images.pexels.com/photos/1379636/pexels-photo-1379636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-          profile="https://images.pexels.com/users/avatars/135125/irina-iriser-740.jpeg?w=256&h=256&fit=crop&crop=faces"
-          title="Irina"
-          desc="lorem ipsum asdjaksdnzxncbkajsdnkasd"
-        />
-        <PostCardComponent 
-          uriImage="https://images.pexels.com/photos/459301/pexels-photo-459301.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          profile="https://images.pexels.com/users/avatars/2659/pixabay-617.png?w=256&h=256&fit=crop&crop=faces"
-          title="Irina"
-          desc="lorem ipsum asdjaksdnzxncbkajsdnkasd"
-        />
-        <PostCardComponent 
-          uriImage="https://images.pexels.com/photos/739407/pexels-photo-739407.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-          profile="https://images.pexels.com/users/avatars/230277/eugene-dorosh-854.jpeg?w=256&h=256&fit=crop&crop=faces"
-          title="Irina"
-          desc="lorem ipsum asdjaksdnzxncbkajsdnkasd"
-        />
-      </View>
-    </ScrollView>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#333',
-    alignItems: 'center',
-    justifyContent: 'center',
+const TabNvigator = createBottomTabNavigator({
+  Home: {
+    screen: HomeScreen,
+    navigationOptions: {
+      tabBarLabel: 'Home',
+      tabBarIcon: ({tintColor}) => (
+        <Icon name ='ios-home' color={tintColor} size={25}/>
+      )
+    }
   },
-});
+  Profile: {
+    screen: ProfileScreen,
+    navigationOptions: {
+      tabBarLabel: 'Profile',
+      tabBarIcon: ({tintColor}) => (
+        <Icon name ='ios-person' color={tintColor} size={25}/>
+      )
+    }
+  }, 
+  Menu: {
+    screen: MenuScreen,
+    navigationOptions: {
+      tabBarLabel: 'Menu',
+      tabBarIcon: ({tintColor}) => (
+        <Icon name ='ios-menu' color={tintColor} size={25}/>
+      )
+    }
+  },
+},{
+  tabBarOptions: {
+    
+  }
+})
+
+export default createAppContainer(TabNvigator);
+
+
